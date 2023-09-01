@@ -288,7 +288,8 @@ svg {
   z-index: 999;
   transform: translateX(100%);
   transition: transform 250ms ease-in-out;
-  overflow: auto;
+  overflow-x: scroll;
+  overflow-x: hidden;
 }
 .menu-container.is-open {
   transform: translateX(0);
@@ -453,8 +454,8 @@ svg {
   }
 }
 @media only screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
+  only screen and (min-width: 768px) and (min-resolution: 192dpi),
+  only screen and (min-width: 768px) and (min-resolution: 2dppx) {
   .section-hero {
     background-image: linear-gradient(
         rgba(46, 47, 66, 0.7),
@@ -475,8 +476,8 @@ svg {
   }
 }
 @media only screen and (min-width: 1158px) and (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
+  only screen and (min-width: 1158px) and (min-resolution: 192dpi),
+  only screen and (min-width: 1158px) and (min-resolution: 2dppx) {
   .section-hero {
     background-image: linear-gradient(
         rgba(46, 47, 66, 0.7),
@@ -729,7 +730,7 @@ svg {
   .section-team-list {
     display: flex;
     gap: 24px;
-    padding: 0 auto;
+    padding: 0;
   }
 }
 .section-team-list-item {
@@ -830,7 +831,7 @@ svg {
   padding: 96px 0;
 }
 @media only screen and (min-width: 1158px) {
-   {
+  .section-customers {
     padding: 120px 0;
   }
 }
@@ -910,7 +911,6 @@ svg {
 
 .portfolio-section {
   padding: 48px 0;
-  margin: 0 auto;
 }
 @media only screen and (min-width: 768px) {
   .portfolio-section {
@@ -923,14 +923,26 @@ svg {
   }
 }
 .portfolio-section-cntainer {
-  margin: 0 auto;
 }
 .list-buttons {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 24px;
   list-style: none;
-  margin-bottom: 72px;
+  margin-bottom: 48px;
+  padding-left: 0;
+}
+@media only screen and (min-width: 768px) {
+  .list-buttons {
+    justify-content: center;
+    margin-bottom: 64px;
+  }
+}
+@media only screen and (min-width: 1158px) {
+  .list-buttons {
+    margin-bottom: 72px;
+  }
 }
 .button-item {
   font-family: 'Roboto', sans-serif;
@@ -976,15 +988,14 @@ svg {
 }
 @media only screen and (min-width: 1158px) {
   .portfolio-list-image {
-  row-gap: 48px;
+    row-gap: 48px;
   }
 }
 .portfolio-list-image-item {
-  width: 100%
 }
 @media only screen and (min-width: 768px) {
   .portfolio-list-image-item {
-    width: calc((100% - 48px) / 2);
+    width: calc((100% - 24px) / 2);
   }
 }
 @media only screen and (min-width: 1158px) {
@@ -993,7 +1004,6 @@ svg {
   }
 }
 .portfolio-link-image-items {
-  display: block;
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1010,14 +1020,16 @@ svg {
 .image-items-box {
   position: relative;
   overflow: hidden;
-  width: 100%;
   max-height: 280px;
 }
 @media only screen and (min-width: 768px) {
   .image-items-box {
-    max-width: 356;
+    max-width: 356px;
     max-height: 300px;
   }
+}
+.portfolio-image {
+  width: 100%;
 }
 .overlay-text {
   position: absolute;
@@ -1302,8 +1314,8 @@ svg {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(46, 47, 66, 0.4);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -1314,18 +1326,31 @@ svg {
   pointer-events: none;
 }
 .modal {
+  width: 392px;
+  min-height: 584px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 408px;
-  min-height: 584px;
   border-radius: 4px;
   background-color: var(--dairy-color);
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 72px 24px 24px 24px;
+  padding-top: 72px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 24px;
+}
+@media only screen and (max-width: 427.98px) {
+  .modal {
+    width: 90%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .modal {
+    width: 408px;
+  }
 }
 .modal-btn {
   position: absolute;
@@ -1363,6 +1388,7 @@ svg {
 }
 .modal-caption {
   margin-bottom: 16px;
+  padding: 0;
   font-weight: 500;
   line-height: 1.5;
   text-align: center;
@@ -1465,7 +1491,7 @@ svg {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: 8px;
+  margin-right: 8px;
   width: 16px;
   height: 16px;
   border: 1px solid rgba(46, 47, 66, 0.4);
