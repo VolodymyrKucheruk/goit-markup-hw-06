@@ -580,6 +580,9 @@ svg {
 .section-text-elements {
   padding-bottom: 72px;
 }
+.section-text-elements:nth-last-child(-n + 1) {
+  padding-bottom: 0;
+}
 @media only screen and (min-width: 768px) {
   .section-text-elements {
     padding: 0;
@@ -613,6 +616,7 @@ svg {
   line-height: 40px;
   text-align: center;
   letter-spacing: 0.02em;
+  color: var(--navyblue-color);
   text-transform: capitalize;
   margin: 0 0 8px 0;
 }
@@ -945,19 +949,20 @@ svg {
   }
 }
 .button-item {
-  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: 500;
-  font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.04em;
   color: var(--iris-color);
   border: none;
   cursor: pointer;
+  max-height: 40px;
   border-radius: 4px;
   border: 1px solid var(--cornflower-color);
   background-color: var(--cloud-color);
-  display: flex;
-  padding: 12px 24px;
+  padding: 8px 16px;
   transition-delay: 0ms;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -972,10 +977,17 @@ svg {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
 }
+@media only screen and (min-width: 768px) {
+  .button-item {
+    padding: 12px 24px;
+    max-height: 48px;
+  }
+}
 
 .portfolio-list-image {
   list-style: none;
   display: flex;
+  gap: 48px;
   flex-wrap: wrap;
   padding-left: 0;
 }
@@ -992,6 +1004,10 @@ svg {
   }
 }
 .portfolio-list-image-item {
+  border: 1px solid var(--cloud, #f4f4fd);
+  background: var(--white, #fff);
+  box-shadow: 0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media only screen and (min-width: 768px) {
   .portfolio-list-image-item {
@@ -1004,7 +1020,6 @@ svg {
   }
 }
 .portfolio-link-image-items {
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-link-image-items:hover,
@@ -1187,6 +1202,11 @@ svg {
   margin: 0;
   margin-bottom: 16px;
 }
+@media only screen and (min-width: 768px) {
+  .social-media-text {
+    text-align: start;
+  }
+}
 .footer-social-media-list {
   display: flex;
   flex-direction: row;
@@ -1271,8 +1291,8 @@ svg {
   font-size: 12px;
   letter-spacing: 0.04em;
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   border: 1px solid #ffffff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   color: var(--white-main-color);
   outline: transparent;
   border-radius: 4px;
